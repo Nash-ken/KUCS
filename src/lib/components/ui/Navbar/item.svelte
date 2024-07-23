@@ -1,0 +1,38 @@
+<script>
+// @ts-nocheck
+
+    export let text;
+    export let anchor = "#";
+    export let mobileView;
+
+    export let variant = "normal";
+    let open = false;
+   
+
+    
+</script>
+
+{#if variant === "normal"}
+    <a href={anchor} class="item p-3 flex md:justify-center items-center rounded-md hover:bg-primary-foreground cursor-pointer select-none ">{text}</a>
+{:else}
+    <a  on:click={toggleOpen} href={anchor} class="item p-3 flex gap-3 justify-center items-center rounded-md hover:bg-primary-foreground cursor-pointer select-none">
+        {text}
+        <svg class:open={open} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 15 15" {...$$props}>
+            <path fill="currentColor" fill-rule="evenodd" d="M3.135 6.158a.5.5 0 0 1 .707-.023L7.5 9.565l3.658-3.43a.5.5 0 0 1 .684.73l-4 3.75a.5.5 0 0 1-.684 0l-4-3.75a.5.5 0 0 1-.023-.707" clip-rule="evenodd" />
+        </svg>
+    </a>
+{/if}
+
+
+
+
+
+<style>
+    svg {
+        transition: rotate .2s;
+    }
+
+    svg.open {
+        rotate: 180deg;
+    }
+</style>
